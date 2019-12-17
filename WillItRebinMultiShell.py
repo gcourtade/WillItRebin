@@ -76,6 +76,9 @@ import pylab
 ## Define main class and text
 class MainCls(wx.Frame):
     def __init__(self, parent, id):
+        self.cwd = os.getcwd()
+        print("self.cwd = {}".format(self.cwd))
+        
         # Initial widgets
         wx.Frame.__init__(self, parent, id, 'Will It Rebin?', style = wx.DEFAULT_FRAME_STYLE ^ wx.RESIZE_BORDER)
         
@@ -436,7 +439,9 @@ class MainCls(wx.Frame):
 
 ## Define function for filebrowsing for data
     def BrowseDataFnc(self, event):
-        FileDialogWindow = wx.FileDialog(None, 'Please select data-file(s)...', os.getcwd(), defaultFile = '', style = wx.OPEN | wx.MULTIPLE)
+        
+        # do not use os.getcwd(), points always to $HOME
+        FileDialogWindow = wx.FileDialog(None, 'Please select data-file(s)...', defaultDir=self.cwd, defaultFile = '', style = wx.OPEN | wx.MULTIPLE)
         
         if FileDialogWindow.ShowModal() == wx.ID_OK:
 #            self.DataPathStr = FileDialogWindow.GetPath()
@@ -704,9 +709,11 @@ def check_qscale(arg):
 
 ## Boilerplate code linking program and widgets
 if __name__ == '__main__':
-
+    
     if len(sys.argv) == 1:
         # if options' length is 0 start GUI
+        # cwd = os.getcwd()
+        # print(cwd)
         App = wx.App()
         frame = MainCls(parent = None, id = -1)
         frame.Show()
