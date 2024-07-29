@@ -593,7 +593,7 @@ def LinRebinFncExt(DataPathStr, SkippedPoints, RebinningFactor, ScaleFactor, QSc
             file.write('### Number of datapoints = ' + str(BinNumber) + '\n')
             
             for i in range(BinNumber):
-                file.write('   ' + '{0:.10e}'.format(xRebinned[i]) + '   ' + '{0:.10e}'.format(yRebinned[i]) + '   ' + '{0:.10e}'.format(wRebinned[i]) + '   0.0\n')
+                file.write('   ' + '{0:.10e}'.format(xRebinned[i]) + '   ' + '{0:.10e}'.format(yRebinned[i]) + '   ' + '{0:.10e}'.format(wRebinned[i]) + '\n')
             
             file.close()
         
