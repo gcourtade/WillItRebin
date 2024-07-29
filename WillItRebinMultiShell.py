@@ -378,8 +378,10 @@ class MainCls(wx.Frame):
                 if y < LowestYValue:
                     LowestYValue = y
             
-        Subplot.set_xscale('log', nonposx = 'clip')
-        Subplot.set_yscale('log', nonposy = 'clip')
+        Subplot.set_xscale('log')
+        Subplot.set_xbound(lower=0)
+        Subplot.set_yscale('log')
+        Subplot.set_ybound(lower=0)
         Subplot.set_ylim(ymin = LowestYValue / 10.0)
         
         Subplot.set_xlabel('q')
@@ -427,8 +429,10 @@ class MainCls(wx.Frame):
                 if y < LowestYValue:
                     LowestYValue = y
         
-        Subplot.set_xscale('log', nonposx = 'clip')
-        Subplot.set_yscale('log', nonposy = 'clip')
+        Subplot.set_xscale('log')
+        Subplot.set_xbound(lower=0)
+        Subplot.set_yscale('log')
+        Subplot.set_ybound(lower=0)
         Subplot.set_ylim(ymin = LowestYValue / 10.0)
         
         Subplot.set_xlabel('q')
@@ -442,7 +446,7 @@ class MainCls(wx.Frame):
     def BrowseDataFnc(self, event):
         
         # do not use os.getcwd(), points always to $HOME
-        FileDialogWindow = wx.FileDialog(None, 'Please select data-file(s)...', defaultDir=self.cwd, defaultFile = '', style = wx.OPEN | wx.MULTIPLE)
+        FileDialogWindow = wx.FileDialog(None, 'Please select data-file(s)...', defaultDir=self.cwd, defaultFile = '', style = wx.FD_OPEN | wx.FD_MULTIPLE)
         
         if FileDialogWindow.ShowModal() == wx.ID_OK:
 #            self.DataPathStr = FileDialogWindow.GetPath()
@@ -493,7 +497,7 @@ class MainCls(wx.Frame):
 
 ## Read data files
 def GetData(filename):
-    file = open(filename, 'rU')
+    file = open(filename, 'r')
     data = file.readlines()
     file.close()
     
