@@ -1,7 +1,11 @@
 # WillItRebin
 WillItRebin, NEW: support of selecting  multiple files; run it without GUI, i.e. for scripting
 
-# Examples
+## Installation
+conda env create -f environment.yml
+conda activate WillItRebin
+
+## Examples
 help:
 -----
 python WillItRebinMultiShell.py -h
