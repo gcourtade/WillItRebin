@@ -3,6 +3,7 @@ WillItRebin, NEW: support of selecting  multiple files; run it without GUI, i.e.
 
 ## Installation
 conda env create -f environment.yml
+
 conda activate WillItRebin
 
 ## Examples
